@@ -1,0 +1,81 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^7.2.5",
+        "ext-exif": "*",
+        "ext-gd": "*",
+        "appstract/laravel-stock": "^1.1",
+        "barryvdh/laravel-debugbar": "^3.2",
+        "beyondcode/laravel-dump-server": "^1.0",
+        "doctrine/dbal": "^2.10",
+        "facade/ignition": "^2.0",
+        "fideloper/proxy": "^4.0",
+        "fzaninotto/faker": "^1.9",
+        "inertiajs/inertia-laravel": "^0.2",
+        "jzonta/faker-restaurant": "^1.1",
+        "laravel/framework": "^7.0",
+        "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.0",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^4.1",
+        "phpunit/phpunit": "^9.0",
+        "reinink/remember-query-strings": "^0.1.0",
+        "spatie/laravel-activitylog": "^3.14",
+        "spatie/laravel-medialibrary": "^8.3",
+        "spatie/laravel-permission": "^3.13",
+        "symfony/translation": "^5.0",
+        "tightenco/ziggy": "^0.9"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
+    },
+    "scripts": {
+        "compile": [
+            "npm run prod",
+            "@php artisan migrate:fresh",
+            "@php artisan db:seed"
+        ],
+        "reseed": [
+            "@php artisan migrate:fresh",
+            "@php artisan db:seed"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
